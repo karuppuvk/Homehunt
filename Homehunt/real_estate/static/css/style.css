@@ -1,0 +1,22 @@
+* {
+  font-family: sans-serif;
+}
+.logo {
+  font-size: 25px;
+}
+.links {
+  display: flex;
+  gap: 20px;
+}
+.links a {
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+}
+.links a:hover {
+  color: blue;
+}
+.nav {
+  display: flex;
+  justify-content: space-around;
+}
