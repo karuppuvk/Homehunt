@@ -21,6 +21,17 @@
         <button>search</button>
       </div>
       <p>Listings will Be Here</p>
+      <div class="props">
+        {% for prop in properties %}
+        <div class="individual-props">
+          {% if prop.image %}
+          <img src="{{ prop.image.url }}" alt="Property image" />
+          {% endif %}
+          <h2>{{ prop.name }}</h2>
+          <h3>{{ prop.location }}</h3>
+        </div>
+        {% endfor %}
+      </div>
     </div>
     <div>contact Form</div>
     <div>fill the page Completely</div>
