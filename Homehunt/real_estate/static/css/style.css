@@ -20,3 +20,72 @@
   display: flex;
   justify-content: space-around;
 }
+.props {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.individual-props {
+  width: 350px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.individual-props:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Property image */
+.individual-props img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Text + button container */
+.prop-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+}
+
+/* Text block */
+.prop-text h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.prop-text h3 {
+  font-size: 14px;
+  margin: 4px 0 0;
+  color: #666;
+}
+
+/* View button / link */
+.view-btn {
+  padding: 8px 14px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  background: #007bff;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+}
+
+.view-btn:hover {
+  background: #0056b3;
+}

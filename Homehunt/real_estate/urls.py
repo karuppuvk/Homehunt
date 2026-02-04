@@ -5,4 +5,5 @@ from . import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.index, name="index"),
+    path('property/<int:pk>/', views.property_detail, name='property_detail'),
 ]

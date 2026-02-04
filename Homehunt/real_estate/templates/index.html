@@ -27,8 +27,17 @@
           {% if prop.image %}
           <img src="{{ prop.image.url }}" alt="Property image" />
           {% endif %}
-          <h2>{{ prop.name }}</h2>
-          <h3>{{ prop.location }}</h3>
+
+          <div class="prop-info">
+            <div class="prop-text">
+              <h2>{{ prop.name }}</h2>
+              <h3>{{ prop.location }}</h3>
+            </div>
+
+            <a href="{% url 'property_detail' prop.id %}" class="view-btn"
+              >View</a
+            >
+          </div>
         </div>
         {% endfor %}
       </div>
