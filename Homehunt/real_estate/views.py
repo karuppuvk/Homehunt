@@ -10,4 +10,4 @@ def index(request):
 
 def property_detail(request, pk):
     prop = get_object_or_404(Property, pk=pk)
-    return render(request, "app/property_detail.html", {"property": prop})
+    return render(request, "property_detail.html", {"property": prop})
