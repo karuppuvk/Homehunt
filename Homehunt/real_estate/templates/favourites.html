@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My Favourites</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-light">
+    <div class="container my-5">
+      <h2 class="mb-4">❤️ My Favourite Properties</h2>
+
+      {% for fav in favourites %}
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5>{{ fav.property.name }}</h5>
+          <p>{{ fav.property.location }}</p>
+          <a
+            href="{% url 'property_detail' fav.property.pk %}"
+            class="btn btn-sm btn-primary"
+          >
+            View Details
+          </a>
+        </div>
+      </div>
+      {% empty %}
+      <p>No favourites yet 😔</p>
+      {% endfor %}
+    </div>
+  </body>
+</html>

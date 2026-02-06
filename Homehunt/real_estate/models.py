@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator
+from django.contrib.auth.models import User
 
 
 class Property(models.Model):
@@ -33,3 +34,15 @@ class Property(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Favourite(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    property = models.ForeignKey(Property, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ("user", "property")
+
+    def __str__(self):
+        return f"{self.user.username} - {self.property.name}"

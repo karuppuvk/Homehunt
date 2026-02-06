@@ -11,8 +11,11 @@
     <div class="nav">
       <div class="logo">HomeHunt</div>
       <div class="links">
-        <a href="">Login</a>
-        <a href="">Signup</a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'favourite_list' %}">❤️ My Favourites</a>
+        {% endif %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'signup' %}">Signup</a>
       </div>
     </div>
     <div>
