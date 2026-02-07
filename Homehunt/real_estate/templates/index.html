@@ -4,26 +4,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HomeHunt</title>
+    <title>HomeHunt | Find Your Perfect Home</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
+
   <body>
+    <!-- NAVBAR -->
     <div class="nav">
-      <div class="logo">HomeHunt</div>
+      <div class="logo">🏡 HomeHunt</div>
       <div class="links">
         {% if user.is_authenticated %}
         <a href="{% url 'favourite_list' %}">❤️ My Favourites</a>
-        {% endif %}
+        <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
         <a href="{% url 'login' %}">Login</a>
         <a href="{% url 'signup' %}">Signup</a>
+        {% endif %}
       </div>
     </div>
-    <div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <h1>Find Your Dream Home</h1>
+      <p>Browse verified properties across top locations at the best prices.</p>
+
       <div class="s-box">
-        <input type="text" placeholder="Seach Properties" />
-        <button>search</button>
+        <input
+          type="text"
+          placeholder="Search by city, area, or property name"
+        />
+        <button>Search</button>
       </div>
-      <p>Listings will Be Here</p>
+    </section>
+
+    <!-- FEATURED PROPERTIES -->
+    <section class="listings">
+      <h2>Featured Properties</h2>
+      <p class="subtitle">Handpicked homes just for you</p>
+
       <div class="props">
         {% for prop in properties %}
         <div class="individual-props">
@@ -33,19 +51,60 @@
 
           <div class="prop-info">
             <div class="prop-text">
-              <h2>{{ prop.name }}</h2>
-              <h3>{{ prop.location }}</h3>
+              <h3>{{ prop.name }}</h3>
+              <p>{{ prop.location }}</p>
+              <span class="price">₹ {{ prop.price }}</span>
             </div>
 
-            <a href="{% url 'property_detail' prop.id %}" class="view-btn"
-              >View</a
-            >
+            <a href="{% url 'property_detail' prop.id %}" class="view-btn">
+              View Details
+            </a>
           </div>
         </div>
+        {% empty %}
+        <p>No properties available right now.</p>
         {% endfor %}
       </div>
-    </div>
-    <div>contact Form</div>
-    <div>fill the page Completely</div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="features">
+      <h2>Why Choose HomeHunt?</h2>
+
+      <div class="feature-box">
+        <div>
+          <h3>🏠 Verified Listings</h3>
+          <p>All properties are checked and verified by our team.</p>
+        </div>
+        <div>
+          <h3>💰 Best Prices</h3>
+          <p>No hidden charges. Transparent and fair pricing.</p>
+        </div>
+        <div>
+          <h3>⚡ Easy Shortlisting</h3>
+          <p>Save your favourite homes and compare anytime.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact">
+      <h2>Get in Touch</h2>
+      <p>Have questions or need help? We’re here for you.</p>
+
+      <form method="post">
+        {% csrf_token %}
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" rows="4"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>© 2026 HomeHunt. All rights reserved.</p>
+      <p>Built with ❤️ using Django</p>
+    </footer>
   </body>
 </html>
