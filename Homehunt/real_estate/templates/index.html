@@ -29,11 +29,15 @@
       <p>Browse verified properties across top locations at the best prices.</p>
 
       <div class="s-box">
-        <input
-          type="text"
-          placeholder="Search by city, area, or property name"
-        />
-        <button>Search</button>
+        <form method="GET" action="{% url 'index' %}">
+          <input
+            type="text"
+            name="q"
+            placeholder="Search by city or property name"
+            value="{{ request.GET.q }}"
+          />
+          <button type="submit">Search</button>
+        </form>
       </div>
     </section>
 

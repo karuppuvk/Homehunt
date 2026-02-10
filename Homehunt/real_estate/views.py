@@ -5,12 +5,22 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.db.models import Q
 
 
 # Create your views here.
 def index(request):
-    properties = Property.objects.all()
-    return render(request, "index.html", {"properties": properties})
+    query = request.GET.get("q")
+    if query:
+        properties = Property.objects.filter(
+            Q(name__icontains=query) | Q(location__icontains=query)
+        )
+    else:
+        properties = Property.objects.all()
+
+    context = {"properties": properties}
+
+    return render(request, "index.html", context)
 
 
 # def property_detail(request, pk):
